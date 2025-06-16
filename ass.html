@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 600px; margin: auto; }
+        label { font-weight: bold; display: block; margin-top: 10px; }
+        input, select, textarea { width: 100%; padding: 8px; margin: 5px 0; }
+        button { padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        .output { margin-top: 20px; padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Student Registration Form</h2>
+    <form id="registrationForm">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="">Select...</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="4" required></textarea>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <div id="output" class="output" style="display: none;">
+        <h3>Submitted Data:</h3>
+        <p><strong>Name:</strong> <span id="outName"></span></p>
+        <p><strong>Date of Birth:</strong> <span id="outDob"></span></p>
+        <p><strong>Gender:</strong> <span id="outGender"></span></p>
+        <p><strong>Email:</strong> <span id="outEmail"></span></p>
+        <p><strong>Address:</strong> <span id="outAddress"></span></p>
+    </div>
+</div>
+
+<script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Collect form data
+        const name = document.getElementById('name').value;
+        const dob = document.getElementById('dob').value;
+        const gender = document.getElementById('gender').value;
+        const email = document.getElementById('email').value;
+        const address = document.getElementById('address').value;
+
+        // Display the collected data
+        document.getElementById('outName').textContent = name;
+        document.getElementById('outDob').textContent = dob;
+        document.getElementById('outGender').textContent = gender;
+        document.getElementById('outEmail').textContent = email;
+        document.getElementById('outAddress').textContent = address;
+
+        // Show the output section
+        document.getElementById('output').style.display = 'block';
+    });
+</script>
+
+</body>
+</html>
